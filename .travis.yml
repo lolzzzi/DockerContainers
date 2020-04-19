@@ -21,7 +21,7 @@ after_success:
 
 # Take build images and push them to docker hub
 
-    - docker push lolzzzi/client
     - docker push lolzzzi/nginx
     - docker push lolzzzi/server
     - docker push lolzzzi/worker
+    - docker push lolzzzi/client
