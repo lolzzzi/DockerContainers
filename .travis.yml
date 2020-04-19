@@ -3,6 +3,12 @@ sudo: required
 services: 
     - docker
 
+before_install:
+    - docker build -t lolzzzi/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    docker run lolzzzi/react-test npm test -- --coverage
+
 after_success:
     - docker build -t lolzzzi/client ./client
     - docker build -t lolzzzi/nginx ./nginx
