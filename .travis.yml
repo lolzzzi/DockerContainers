@@ -11,7 +11,7 @@ script:
     - docker run -e CI=true lolzzzi/react-test npm test
 
 after_success:
-    - docker build -t lolzzzi/frontend ./client
+    - docker build -t lolzzzi/front ./frontend
     - docker build -t lolzzzi/nginx ./nginx
     - docker build -t lolzzzi/server ./server
     - docker build -t lolzzzi/worker ./worker
@@ -21,7 +21,7 @@ after_success:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
 # Take build images and push them to docker hub
-    - docker push lolzzzi/frontend
+    - docker push lolzzzi/front
     - docker push lolzzzi/nginx
     - docker push lolzzzi/server
     - docker push lolzzzi/worker
