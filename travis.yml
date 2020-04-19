@@ -1,0 +1,21 @@
+ sudo : required
+
+ services: 
+    - docker
+
+after_success:
+    - docker build -t lolzzzi/client ./client
+    - docker build -t lolzzzi/nginx ./nginx
+    - docker build -t lolzzzi/server ./server
+    - docker build -t lolzzzi/worker ./worker
+
+# Login into docker cli
+
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# Take build images and push them to docker hub
+
+- docker push lolzzzi/client
+- docker push lolzzzi/nginx
+- docker push lolzzzi/server
+- docker push lolzzzi/worker
