@@ -1,0 +1,38 @@
+{
+    "AWSEBDockerrunVersion" : 2,
+        "containerDefinations": [
+        {
+            "name":"front",
+            "image":"lolzzzi/front",
+            "hostname":"front",
+            "essential":"false"
+        },
+        {
+            "name":"server",
+            "image":"lolzzzi/server",
+            "hostname":"server",
+            "essential":"false"
+        },
+        {
+            "name":"worker",
+            "image":"lolzzzi/worker",
+            "hostname":"worker",
+            "essential":"false"
+        },
+        {
+            "name":"nginx",
+            "image":"lolzzzi/nginx",
+            "hostname":"nginx",
+            "essential":"true",
+            "portMappings": [
+                {
+                    "hostPort":80,
+                    "containerPort":80 
+                }
+            ],
+            "links": ["front","server"]
+        }    
+
+    ]
+
+}

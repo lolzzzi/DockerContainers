@@ -24,4 +24,21 @@ after_success:
     - docker push lolzzzi/nginx
     - docker push lolzzzi/server
     - docker push lolzzzi/worker
+
+
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: us-west-2
+    app : MultiDocker
+    env : Multidocker-env
+    bucket_name: elasticbeanstalk-us-west-2-971014555165
+    bucket_path: Multidocker
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+
+
     
